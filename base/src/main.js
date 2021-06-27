@@ -18,13 +18,13 @@ new Vue({
 // 注册子应用
 registerMicroApps([
   {
-    name: "vue app", // 子应用名称
+    name: "app1", // 子应用名称
     entry: "//localhost:8001", // 子应用入口
     container: "#app1-container", // 子应用所在容器
     activeRule: "/app1", // 子应用触发规则（路径）
   },
   {
-    name: "purehtml app", // 子应用名称
+    name: "app2", // 子应用名称
     entry: "//localhost:8002", // 子应用入口
     container: "#app2-container", // 子应用所在容器
     activeRule: "/app2", // 子应用触发规则（路径）

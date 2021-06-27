@@ -4,17 +4,17 @@ const render = $ => {
 };
 
 (global => {
-  global['purehtml'] = {
+  global['app2'] = {
     bootstrap: () => {
-      console.log('purehtml bootstrap');
+      console.log('app2 bootstrap');
       return Promise.resolve();
     },
     mount: () => {
-      console.log('purehtml mount');
+      console.log('app2 mount');
       return render($);
     },
     unmount: () => {
-      console.log('purehtml unmount');
+      console.log('app2 unmount');
       return Promise.resolve();
     },
   };
