@@ -32,7 +32,7 @@ registerMicroApps([
 ]);
 
 // 启动默认应用
-setDefaultMountApp("/vue");
+setDefaultMountApp("/app1");
 
 // 开启服务
 start();

@@ -10,7 +10,7 @@ yarn install
 yarn demo:install
 yarn demo:start
 ```
-
+Visit http://localhost:8000.
 
 ### Customize configuration
 See [Configuration Reference](https://qiankun.umijs.org/).
