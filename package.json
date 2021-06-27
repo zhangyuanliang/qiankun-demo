@@ -11,9 +11,9 @@
     "install:app1": "cd app1 && yarn",
     "install:app2": "cd app2 && yarn",
     "demo:start": "npm-run-all --parallel start:*",
+    "start:base": "cd base && yarn start",
     "start:app1": "cd app1 && yarn start",
     "start:app2": "cd app2 && yarn start",
-    "start:base": "cd base && yarn start",
     "demo:build": "npm-run-all --parallel build:*",
     "build:base": "cd base && yarn build",
     "build:app1": "cd app1 && yarn build"
