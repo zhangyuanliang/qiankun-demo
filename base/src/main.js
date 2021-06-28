@@ -6,7 +6,7 @@ import store from "./store";
 Vue.config.productionTip = false;
 
 // 导入qiankun.js
-import { registerMicroApps, setDefaultMountApp, start } from "qiankun";
+import { registerMicroApps, setDefaultMountApp, start, initGlobalState } from "qiankun";
 Vue.config.productionTip = false;
 
 new Vue({
@@ -30,6 +30,16 @@ registerMicroApps([
     activeRule: "/app2", // 子应用触发规则（路径）
   },
 ]);
+
+const { onGlobalStateChange, setGlobalState } = initGlobalState({
+  name: 'qiankun',
+});
+
+onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev));
+
+setGlobalState({
+  name: 'base-main.js',
+});
 
 // 启动默认应用
 setDefaultMountApp("/app1");

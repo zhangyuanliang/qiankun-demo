@@ -6,11 +6,18 @@ const render = $ => {
 (global => {
   global['app2'] = {
     bootstrap: () => {
-      console.log('app2 bootstrap');
+      console.log('[app2 purehtml] bootstrap');
       return Promise.resolve();
     },
-    mount: () => {
-      console.log('app2 mount');
+    mount: (props) => {
+      console.log('[app2 purehtml] props from main framework', props);
+      props.onGlobalStateChange((value, prev) => {
+        if (value.name !== prev.name) {
+          window.componentName = value.name
+        }
+      });
+      global.$onGlobalStateChange = props.onGlobalStateChange
+      global.$setGlobalState = props.setGlobalState
       return render($);
     },
     unmount: () => {

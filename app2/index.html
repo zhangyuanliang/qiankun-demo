@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js">
-  </script>
-</head>
-<body>
-  Purehtml Example
-  <script src="//localhost:8002/entry.js" entry></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      .content-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrap">
+      <div style="margin: 10px">Purehtml Example</div>
+      <button id="btn">修改globalState</button>
+      <div>
+        <h3>[globalState] name:</h3>
+        <span class="globalState"></span>
+      </div>
+    </div>
+    <script src="//localhost:8002/entry.js" entry></script>
+    <script type="text/javascript">
+      let btn = document.getElementById("btn");
+      let el = document.querySelector(".globalState");
+      el.innerHTML = window.componentName;
+      btn.onclick = function (e) {
+        window.$setGlobalState({
+          name: "app2-index.html",
+        });
+        el.innerHTML = window.componentName;
+      };
+    </script>
+  </body>
 </html>

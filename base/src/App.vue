@@ -13,9 +13,17 @@
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    
+  },
+};
+</script>
+
 <style lang="less">
 #app {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
