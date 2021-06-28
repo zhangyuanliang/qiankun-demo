@@ -6,9 +6,8 @@
 
 ## Project setup
 ```
-yarn install
-yarn demo:install
-yarn demo:start
+yarn
+yarn start
 ```
 Visit http://localhost:8000.
 
