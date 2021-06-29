@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { store as commonStore } from 'common'
 
 Vue.config.productionTip = false
 
@@ -22,6 +23,8 @@ if (window.__POWERED_BY_QIANKUN__) {
 }
 // 独立运行
 if (!window.__POWERED_BY_QIANKUN__) {
+  // 独立运行时，也注册一个名为global的store module
+  commonStore.globalRegister(store)
   render();
 }
 
@@ -32,11 +35,12 @@ export async function bootstrap() {
 
 export async function mount(props) {
   console.log('[app1 vue] props from main framework', props);
-  props.onGlobalStateChange((value, prev) => {
-    if (value.name !== prev.name) {
-      store.commit('SET_GLOBAL_STATE', value)
-    }
-  });
+  commonStore.globalRegister(store, props)
+  // props.onGlobalStateChange((value, prev) => {
+  //   if (value.name !== prev.name) {
+  //     store.commit('SET_GLOBAL_STATE', value)
+  //   }
+  // });
   Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange;
   Vue.prototype.$setGlobalState = props.setGlobalState;
   render(props);

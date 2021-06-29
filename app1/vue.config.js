@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 const port = 8001; // dev port
 module.exports = {
+  transpileDependencies: ['common'],
   outputDir: "dist",
   assetsDir: "static",
   filenameHashing: true,

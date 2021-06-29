@@ -7,9 +7,7 @@
       <a href="/app2" class="tabs-item">app2: purehtml</a>
     </div>
     <!-- 子应用容器 -->
-    <div id="app1-container"></div>
-    <!-- 子应用容器 -->
-    <div id="app2-container"></div>
+    <div id="subapp-viewport"></div>
   </div>
 </template>
 

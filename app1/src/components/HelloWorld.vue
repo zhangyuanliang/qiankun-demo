@@ -11,24 +11,21 @@
 <script>
 import { mapState } from "vuex";
 export default {
+  computed: {
+    // 通过global获取user的信息
+    ...mapState('global', {
+      name: state => state.name
+    })
+  },
   data() {
     return {};
-  },
-  computed: {
-    ...mapState({
-      name: state => {
-        return state.app.name
-      },
-    }),
   },
   mounted() {
     
   },
   methods: {
     changeGlobalState() {
-      this.$setGlobalState({
-        name: "app1-components-HelloWorld",
-      });
+      this.$store.commit('global/setGlobalState', { name: 'app1-components-HelloWorld' })
     },
   },
 };
