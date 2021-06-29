@@ -1,3 +1,5 @@
+import { store as commonStore } from 'common'
+
 const render = $ => {
   $('#app2-container').html('Hello, render with jQuery');
   return Promise.resolve();
@@ -11,13 +13,14 @@ const render = $ => {
     },
     mount: (props) => {
       console.log('[app2 purehtml] props from main framework', props);
-      props.onGlobalStateChange((value, prev) => {
-        if (value.name !== prev.name) {
-          window.componentName = value.name
-        }
-      });
-      global.$onGlobalStateChange = props.onGlobalStateChange
-      global.$setGlobalState = props.setGlobalState
+      // props.onGlobalStateChange((value, prev) => {
+      //   if (value.name !== prev.name) {
+      //     window.componentName = value.name
+      //   }
+      // });
+      commonStore.globalRegister(store, props)
+      // global.$onGlobalStateChange = props.onGlobalStateChange
+      // global.$setGlobalState = props.setGlobalState
       return render($);
     },
     unmount: () => {
