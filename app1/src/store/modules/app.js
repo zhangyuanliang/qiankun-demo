@@ -1,10 +1,10 @@
 const app = {
   state: {
-    name: ''
+    globalState: ''
   },
   mutations: {
     SET_GLOBAL_STATE: (state, payload) => {
-      state.name = payload.name
+      state.globalState = payload
     },
   },
   actions: {

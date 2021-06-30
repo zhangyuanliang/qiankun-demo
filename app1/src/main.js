@@ -35,6 +35,9 @@ export async function bootstrap() {
 
 export async function mount(props) {
   console.log('[app1 vue] props from main framework', props);
+  console.log(props.getGlobalState())
+  store.commit('SET_GLOBAL_STATE', props.getGlobalState())
+  
   commonStore.globalRegister(store, props)
   // props.onGlobalStateChange((value, prev) => {
   //   if (value.name !== prev.name) {

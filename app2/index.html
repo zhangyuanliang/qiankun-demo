@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="//localhost:8002/entry.js" entry></script>
     <style>
       .content-wrap {
         display: flex;
@@ -15,26 +17,33 @@
     </style>
   </head>
   <body>
-    <div class="content-wrap">
+    <div id="pureHtml" class="content-wrap">
       <div style="margin: 10px">Purehtml Example</div>
-      <button id="btn">修改globalState</button>
+      <button @click="handleClick">修改globalState</button>
       <div>
         <h3>[globalState] name:</h3>
-        <span class="globalState"></span>
+        <span id="globalState">{{name}}</span>
       </div>
     </div>
-    <script src="//localhost:8002/entry.js" entry></script>
     <script type="text/javascript">
-      import {store} from 'common';
-      let btn = document.getElementById("btn");
-      let el = document.querySelector(".globalState");
-      el.innerHTML = window.componentName;
-      btn.onclick = function (e) {
-        window.$setGlobalState({
-          name: "app2-index.html",
-        });
-        el.innerHTML = window.componentName;
-      };
+      var app = new Vue({
+        el: "#pureHtml",
+        data() {
+          name: ''
+        },
+        mounted() {
+          // props.onGlobalStateChange((value, prev) => {
+          //   if (value.name !== prev.name) {
+          //     el.innerHTML = globalState.name;
+          //   }
+          // });
+        },
+        methods: {
+          handleClick() {
+            this.name = "app2-index.html"
+          }
+        },
+      })
     </script>
   </body>
 </html>

@@ -9,23 +9,25 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
+import { store } from "common";
 export default {
   computed: {
     // 通过global获取user的信息
-    ...mapState('global', {
-      name: state => state.name
-    })
+    ...mapState({
+      name: state => state.global.name,
+    }),
   },
   data() {
     return {};
   },
-  mounted() {
-    
-  },
+  mounted() {},
   methods: {
+    ...mapActions({
+      setGlobalState: "global/setGlobalState",
+    }),
     changeGlobalState() {
-      this.$store.commit('global/setGlobalState', { name: 'app1-components-HelloWorld' })
+      this.setGlobalState({ name: "app1-components-HelloWorld" });
     },
   },
 };

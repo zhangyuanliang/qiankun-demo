@@ -1,5 +1,5 @@
 import store from './store'
-console.log(process.env)
+
 const microApps = [
   {
     name: "app1", // 子应用名称
