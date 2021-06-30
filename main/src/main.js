@@ -2,7 +2,6 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import microApps from './micro-app'
 
 Vue.config.productionTip = false;
 
@@ -10,49 +9,29 @@ Vue.config.productionTip = false;
 import { registerMicroApps, setDefaultMountApp, start } from "qiankun";
 Vue.config.productionTip = false;
 
-const instance = new Vue({
+new Vue({
   router,
-  // store,
+  store,
   render: (h) => h(App),
 }).$mount("#app");
 
-// 定义loader方法，loading改变时，将变量赋值给App.vue的data中的isLoading
-function loader (loading) {
-  if (instance && instance.$children) {
-    // instance.$children[0] 是App.vue，此时直接改动App.vue的isLoading
-    instance.$children[0].isLoading = loading
-  }
-}
-
-// 给子应用配置加上loader方法
-const apps = microApps.map(item => {
-  return {
-    ...item,
-    loader
-  }
-})
-
 // 注册子应用
-registerMicroApps(apps, {
-  beforeLoad: app => {
-    console.log('before load app.name====>>>>>', app.name)
+registerMicroApps([
+  {
+    name: "app1", // 子应用名称
+    entry: process.env.VUE_APP_SUB_APP1, // 子应用入口
+    container: '#subapp-viewport', // 子应用挂载的 div
+    activeRule: "/app1", // 子应用触发规则（路径）
+    props: { data : { store, router } }
   },
-  beforeMount: [
-    app => {
-      console.log('[LifeCycle] before mount %c%s', 'color: green;', app.name)
-    }
-  ],
-  afterMount: [
-    app => {
-      console.log('[LifeCycle] after mount %c%s', 'color: green;', app.name)
-    }
-  ],
-  afterUnmount: [
-    app => {
-      console.log('[LifeCycle] after unmount %c%s', 'color: green;', app.name)
-    }
-  ]
-});
+  {
+    name: "app2", // 子应用名称
+    entry: process.env.VUE_APP_SUB_APP2, // 子应用入口
+    container: '#subapp-viewport', // 子应用挂载的 div
+    activeRule: "/app2", // 子应用触发规则（路径）
+    props: { data : { store, router } }
+  },
+]);
 
 // 启动默认应用
 setDefaultMountApp("/app1");

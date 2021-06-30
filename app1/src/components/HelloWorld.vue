@@ -3,31 +3,29 @@
     <button @click="changeGlobalState">修改globalState</button>
     <div>
       <h3>[globalState] name:</h3>
-      {{ name }}
+      {{ commonData.name }}
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import { store } from "common";
 export default {
-  computed: {
-    // 通过global获取user的信息
-    ...mapState({
-      name: state => state.global.name,
-    }),
-  },
   data() {
-    return {};
+    return {
+      isQiankun: window.__POWERED_BY_QIANKUN__,
+    };
+  },
+  computed: {
+    commonData(){
+      return this.isQiankun ? this.$root.parentVuex.state.app.commonData : '';
+    }
   },
   mounted() {},
   methods: {
-    ...mapActions({
-      setGlobalState: "global/setGlobalState",
-    }),
     changeGlobalState() {
-      this.setGlobalState({ name: "app1-components-HelloWorld" });
+      if(this.isQiankun){
+        this.$root.parentVuex.commit('SET_COMMON_DATA', { name: "app1-components-HelloWorld" });
+      }
     },
   },
 };

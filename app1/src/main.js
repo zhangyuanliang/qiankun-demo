@@ -2,17 +2,21 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { store as commonStore } from 'common'
 
 Vue.config.productionTip = false
 
 let instance = null;
 
-function render(props = {}) {
-  const { container } = props;
+function render({ data = {} , container } = {}) {
   instance = new Vue({
     router,
     store,
+    data(){
+      return {
+        parentRouter: data.router,
+        parentVuex: data.store,
+      }
+    },
     render: h => h(App),
   }).$mount(container ? container.querySelector('#app') : '#app');
 }
@@ -24,7 +28,6 @@ if (window.__POWERED_BY_QIANKUN__) {
 // 独立运行
 if (!window.__POWERED_BY_QIANKUN__) {
   // 独立运行时，也注册一个名为global的store module
-  commonStore.globalRegister(store)
   render();
 }
 
@@ -35,17 +38,14 @@ export async function bootstrap() {
 
 export async function mount(props) {
   console.log('[app1 vue] props from main framework', props);
-  console.log(props.getGlobalState())
-  store.commit('SET_GLOBAL_STATE', props.getGlobalState())
   
-  commonStore.globalRegister(store, props)
   // props.onGlobalStateChange((value, prev) => {
   //   if (value.name !== prev.name) {
   //     store.commit('SET_GLOBAL_STATE', value)
   //   }
   // });
-  Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange;
-  Vue.prototype.$setGlobalState = props.setGlobalState;
+  // Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange;
+  // Vue.prototype.$setGlobalState = props.setGlobalState;
   render(props);
 }
 export async function unmount() {

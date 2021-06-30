@@ -29,14 +29,11 @@
       var app = new Vue({
         el: "#pureHtml",
         data() {
-          name: ''
+          return {
+            name: ''
+          }
         },
         mounted() {
-          // props.onGlobalStateChange((value, prev) => {
-          //   if (value.name !== prev.name) {
-          //     el.innerHTML = globalState.name;
-          //   }
-          // });
         },
         methods: {
           handleClick() {
