@@ -1,14 +1,17 @@
 <template>
   <div class="hello">
-    <button @click="changeGlobalState">修改globalState</button>
-    <div>
-      <h3>[globalState] name:</h3>
-      {{ commonData.name }}
+    <div class="app-panel">
+      <button @click="changeGlobalState">修改globalState</button>
+      <div class="global-state">
+        <h3>[globalState] name:</h3>
+        <span> {{ commonData }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -16,15 +19,18 @@ export default {
     };
   },
   computed: {
-    commonData(){
-      return this.isQiankun ? this.$root.parentVuex.state.app.commonData : '';
-    }
+    commonData() {
+      return this.isQiankun ? this.$root.parentVuex.state.common.commonData : "";
+    },
   },
   mounted() {},
   methods: {
+    ...mapMutations({
+      setGlobalState: "SET_GLOBAL_STATE",
+    }),
     changeGlobalState() {
-      if(this.isQiankun){
-        this.$root.parentVuex.commit('SET_COMMON_DATA', { name: "app1-components-HelloWorld" });
+      if (this.isQiankun) {
+        this.$root.parentVuex.commit("SET_COMMON_DATA", "app1-components-HelloWorld");
       }
     },
   },
@@ -32,4 +38,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.global-state {
+  display: flex;
+  align-items: center;
+  > span {
+    margin-left: 10px;
+  }
+}
+.app-panel {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

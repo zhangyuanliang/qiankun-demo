@@ -1,5 +1,4 @@
 const render = ({ data = {} , container } = {}) => {
-  window.commonData = data
   return Promise.resolve();
 };
 

@@ -1,8 +1,6 @@
-const app = {
+const common = {
   state: {
-    commonData: {
-
-    }
+    commonData: ''
   },
   mutations: {
     SET_COMMON_DATA: (state, payload) => {
@@ -16,4 +14,4 @@ const app = {
   }
 }
 
-export default app
+export default common
