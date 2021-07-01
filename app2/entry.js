@@ -1,4 +1,5 @@
 const render = ({ data = {} , container } = {}) => {
+  sessionStorage.setItem('globalState', JSON.stringify(data))
   return Promise.resolve();
 };
 

@@ -33,7 +33,10 @@
             name: ''
           }
         },
-        mounted() {
+        mounted() {debugger
+          const state = sessionStorage.getItem('globalState');
+          const globalState = JSON.parse( state || '{}')
+          this.name = globalState.name
         },
         methods: {
           handleClick() {
