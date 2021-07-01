@@ -1,5 +1,5 @@
-const render = ({ data = {} , container } = {}) => {
-  sessionStorage.setItem('globalState', JSON.stringify(data))
+const render = ({ data = {} } = {}) => {
+  // sessionStorage.setItem('globalState', JSON.stringify(data))
   return Promise.resolve();
 };
 
@@ -13,6 +13,7 @@ const render = ({ data = {} , container } = {}) => {
       console.log('[app2 purehtml] props from main framework', props);
       // global.$onGlobalStateChange = props.onGlobalStateChange
       // window.$setGlobalState = props.setGlobalState
+      window.$store = props.data.store
       return render(props);
     },
     unmount: () => {

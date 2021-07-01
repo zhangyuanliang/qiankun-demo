@@ -5,13 +5,14 @@
       <div class="global-state">
         <h3>[globalState] name:</h3>
         <span> {{ commonData }}</span>
+        <span>{{ globalState }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -19,6 +20,9 @@ export default {
     };
   },
   computed: {
+    ...mapState({
+      globalState: (state) => state.app.globalState,
+    }),
     commonData() {
       return this.isQiankun ? this.$root.parentVuex.state.common.commonData : "";
     },
@@ -29,6 +33,7 @@ export default {
       setGlobalState: "SET_GLOBAL_STATE",
     }),
     changeGlobalState() {
+      this.setGlobalState("test");
       if (this.isQiankun) {
         this.$root.parentVuex.commit("SET_COMMON_DATA", "app1-components-HelloWorld");
       }

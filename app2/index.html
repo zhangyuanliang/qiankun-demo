@@ -34,12 +34,13 @@
           }
         },
         mounted() {
-          const state = sessionStorage.getItem('globalState');
-          const globalState = JSON.parse( state || '{}')
-          this.name = globalState.name
+          // const state = sessionStorage.getItem('globalState');
+          // const globalState = JSON.parse( state || '{}')
+          // this.name = globalState.name
         },
         methods: {
           handleClick() {
+            window.$store.commit("SET_COMMON_DATA", "app2-index.html");
             this.name = "app2-index.html"
           }
         },

@@ -29,7 +29,7 @@ registerMicroApps([
     entry: process.env.VUE_APP_SUB_APP2, // 子应用入口
     container: '#subapp-viewport', // 子应用挂载的 div
     activeRule: "/app2", // 子应用触发规则（路径）
-    props: { data : { store, router } }
+    props: { data : { store } }
   },
 ]);
 
