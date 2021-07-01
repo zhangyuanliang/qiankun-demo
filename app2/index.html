@@ -33,7 +33,7 @@
             name: ''
           }
         },
-        mounted() {debugger
+        mounted() {
           const state = sessionStorage.getItem('globalState');
           const globalState = JSON.parse( state || '{}')
           this.name = globalState.name
