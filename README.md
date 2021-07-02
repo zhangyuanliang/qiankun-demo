@@ -5,8 +5,8 @@
 - app2 子应用，纯html项目
 
 # 分支
-- main分支 通讯采用 qiankun API initGlobalState/onGlobalStateChange
-- dev分支 通讯基于 props 传参的模式
+- main分支 应用之间通讯采用 qiankun API initGlobalState/onGlobalStateChange
+- dev分支 应用之间通讯基于 props 传参的模式
 ## Project setup
 ```
 yarn
