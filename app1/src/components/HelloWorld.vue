@@ -4,8 +4,7 @@
       <button @click="changeGlobalState">修改globalState</button>
       <div class="global-state">
         <h3>[globalState] name:</h3>
-        <span> {{ commonData }}</span>
-        <span>{{ globalState }}</span>
+        <span>{{ globalState.user }}</span>
       </div>
     </div>
   </div>
@@ -17,25 +16,18 @@ export default {
   data() {
     return {
       isQiankun: window.__POWERED_BY_QIANKUN__,
+      globalState: ''
     };
   },
-  computed: {
-    ...mapState({
-      globalState: (state) => state.app.globalState,
-    }),
-    commonData() {
-      return this.isQiankun ? this.$root.parentVuex.state.common.commonData : "";
-    },
+  mounted() {
+    this.globalState = this.$actions.getGlobalState()
   },
-  mounted() {},
   methods: {
-    ...mapMutations({
-      setGlobalState: "SET_GLOBAL_STATE",
-    }),
     changeGlobalState() {
-      this.setGlobalState("test");
       if (this.isQiankun) {
-        this.$root.parentVuex.commit("SET_COMMON_DATA", "app1-components-HelloWorld");
+        this.$setGlobalState({
+          user: 'app1-components-HelloWorld'
+        });
       }
     },
   },

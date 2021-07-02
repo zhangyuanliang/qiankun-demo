@@ -36,13 +36,14 @@ export async function bootstrap() {
 export async function mount(props) {
   console.log('[app1 vue] props from main framework', props);
   
-  // props.onGlobalStateChange((value, prev) => {
-  //   if (value.name !== prev.name) {
-  //     store.commit('SET_GLOBAL_STATE', value)
-  //   }
-  // });
+  props.onGlobalStateChange((value, prev) => {
+    if (value.name !== prev.name) {
+      store.commit('SET_GLOBAL_STATE', value)
+    }
+  });
   // Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange;
-  // Vue.prototype.$setGlobalState = props.setGlobalState;
+  Vue.prototype.$setGlobalState = props.setGlobalState;
+  Vue.prototype.$actions = props.actions
   render(props);
 }
 export async function unmount() {

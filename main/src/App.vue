@@ -11,7 +11,7 @@
       <button @click="changeGlobalState">修改globalState</button>
       <div class="global-state">
         <h3>[globalState] name:</h3>
-        <span> {{ commonData }}</span>
+        <span> {{ globalState.user }}</span>
       </div>
     </div>
     <!-- 子应用容器 -->
@@ -20,31 +20,25 @@
 </template>
 
 <script>
-import { loadMicroApp } from "qiankun";
 import { mapState, mapMutations } from "vuex";
 export default {
-  computed: {
-    ...mapState({
-      commonData: (state) => state.common.commonData,
-    }),
+  data() {
+    return {
+      globalState: {}
+    }
+  },
+  mounted () {
+    this.globalState = this.$actions.getGlobalState();
   },
   methods: {
-    ...mapMutations({
-      setCommonData: "SET_COMMON_DATA",
-    }),
     changeGlobalState() {
-      this.setCommonData("main-App.vue");
+      this.$actions.setGlobalState({
+        user: 'main-App.vue'
+      })
     },
     toApp2() {
       const store = this.$store
       this.$router.push('/app2')
-      // loadMicroApp({
-      //   name: "app2", // 子应用名称
-      //   entry: process.env.VUE_APP_SUB_APP2, // 子应用入口
-      //   container: '#subapp-viewport', // 子应用挂载的 div
-      //   activeRule: "/app2", // 子应用触发规则（路径）
-      //   props: { data : { store } }
-      // });
     },
   },
 };

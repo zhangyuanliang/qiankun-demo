@@ -2,12 +2,12 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-
-Vue.config.productionTip = false;
-
 // 导入qiankun.js
 import { registerMicroApps, setDefaultMountApp, start } from "qiankun";
+import actions from "./globalState";
+
 Vue.config.productionTip = false;
+Vue.prototype.$actions = actions
 
 new Vue({
   router,
@@ -20,16 +20,16 @@ registerMicroApps([
   {
     name: "app1", // 子应用名称
     entry: process.env.VUE_APP_SUB_APP1, // 子应用入口
-    container: '#subapp-viewport', // 子应用挂载的 div
+    container: "#subapp-viewport", // 子应用挂载的 div
     activeRule: "/app1", // 子应用触发规则（路径）
-    props: { data : { store, router } }
+    props: { actions, data: { store, router } },
   },
   {
     name: "app2", // 子应用名称
     entry: process.env.VUE_APP_SUB_APP2, // 子应用入口
-    container: '#subapp-viewport', // 子应用挂载的 div
+    container: "#subapp-viewport", // 子应用挂载的 div
     activeRule: "/app2", // 子应用触发规则（路径）
-    props: { data : { store } }
+    props: { actions, data: { actions, store } },
   },
 ]);
 
