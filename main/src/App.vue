@@ -8,7 +8,7 @@
       <!-- <span @click="toApp2">app2: purehtml</span> -->
     </div>
     <div class="main-panel">
-      <button @click="changeGlobalState">修改globalState</button>
+      <button @click="changeGlobalState">main globalState</button>
       <div class="global-state">
         <h3>[globalState] name:</h3>
         <span> {{ globalState.user }}</span>

@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class="app-panel">
-      <button @click="changeGlobalState">修改globalState</button>
+      <button @click="changeGlobalState">sub globalState</button>
       <div class="global-state">
         <h3>[globalState] name:</h3>
         <span>{{ globalState.user }}</span>
