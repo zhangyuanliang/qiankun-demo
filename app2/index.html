@@ -19,11 +19,11 @@
   <body>
     <div id="pureHtml" class="content-wrap">
       <div style="margin: 10px">Purehtml Example</div>
-      <button @click="handleClick">修改globalState</button>
+      <!-- <button @click="handleClick">修改globalState</button>
       <div>
         <h3>[globalState] name:</h3>
         <span id="globalState">{{name}}</span>
-      </div>
+      </div> -->
     </div>
     <script type="text/javascript">
       var app = new Vue({
@@ -40,8 +40,8 @@
         },
         methods: {
           handleClick() {
-            window.$store.commit("SET_COMMON_DATA", "app2-index.html");
-            this.name = "app2-index.html"
+            // window.$store.commit("SET_COMMON_DATA", "app2-index.html");
+            // this.name = "app2-index.html"
           }
         },
       })
