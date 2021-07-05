@@ -30,11 +30,11 @@ if (!window.__POWERED_BY_QIANKUN__) {
 
 // 生命周期
 export async function bootstrap() {
-  console.log('[app1 vue] bootstraped');
+  console.log('[sub-vue] bootstraped');
 }
 
 export async function mount(props) {
-  console.log('[app1 vue] props from main framework', props);
+  console.log('[sub-vue] props from main framework', props);
   
   props.onGlobalStateChange((value, prev) => {
     if (value.name !== prev.name) {

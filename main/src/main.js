@@ -18,30 +18,30 @@ new Vue({
 // 注册子应用
 registerMicroApps([
   {
-    name: "app1", // 子应用名称
-    entry: process.env.VUE_APP_SUB_APP1, // 子应用入口
+    name: "sub-vue", // 子应用名称
+    entry: process.env.VUE_APP_SUB_VUE, // 子应用入口
     container: "#subapp-viewport", // 子应用挂载的 div
-    activeRule: "/app1", // 子应用触发规则（路径）
+    activeRule: "/sub-vue", // 子应用触发规则（路径）
     props: { actions, data: { store, router } },
   },
   {
-    name: "app2", // 子应用名称
-    entry: process.env.VUE_APP_SUB_APP2, // 子应用入口
+    name: "sub-purehtml", // 子应用名称
+    entry: process.env.VUE_APP_SUB_PUREHTML, // 子应用入口
     container: "#subapp-viewport", // 子应用挂载的 div
-    activeRule: "/app2", // 子应用触发规则（路径）
+    activeRule: "/sub-purehtml", // 子应用触发规则（路径）
     props: { actions, data: { actions, store } },
   },
   {
-    name: "app3", // 子应用名称
-    entry: process.env.VUE_APP_SUB_APP3, // 子应用入口
+    name: "sub-react", // 子应用名称
+    entry: process.env.VUE_APP_SUB_REACT, // 子应用入口
     container: "#subapp-viewport", // 子应用挂载的 div
-    activeRule: "/app3", // 子应用触发规则（路径）
+    activeRule: "/sub-react", // 子应用触发规则（路径）
     props: { actions, data: { actions, store } },
   },
 ]);
 
 // 启动默认应用
-setDefaultMountApp("/app1");
+setDefaultMountApp("/sub-vue");
 
 // 开启服务
 start();

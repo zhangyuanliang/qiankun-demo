@@ -1,4 +1,4 @@
-# app1
+# sub-vue
 
 ## Project setup
 ```

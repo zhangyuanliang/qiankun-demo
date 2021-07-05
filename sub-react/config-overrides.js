@@ -3,9 +3,11 @@ console.log(name)
 
 module.exports = {
   webpack: function override(config, env) {
-    // config.entry = config.entry.filter(
-    //   (e) => !e.includes('webpackHotDevClient')
-    // );
+    if (config.entry instanceof Array) {
+      config.entry = config.entry.filter(
+        (e) => !e.includes('webpackHotDevClient')
+      );
+    }
 
     config.output.library = `${name}-[name]`;
     config.output.libraryTarget = 'umd';

@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div>
-      <!-- 子应用 vue app1 -->
-      <router-link to="/app1/" class="tabs-item">app1: vue</router-link>
-      <!-- 子应用 purehtml app2 -->
-      <router-link to="/app2/" class="tabs-item">app2: purehtml</router-link>
-      <!-- 子应用 react app3 -->
-      <router-link to="/app3/" class="tabs-item">app3: react</router-link>
-      <!-- <span @click="toApp2">app2: purehtml</span> -->
+      <!-- 子应用 sub-vue -->
+      <router-link to="/sub-vue/" class="tabs-item">sub-vue</router-link>
+      <!-- 子应用 sub-purehtml -->
+      <router-link to="/sub-purehtml/" class="tabs-item">sub-purehtml</router-link>
+      <!-- 子应用 sub-react -->
+      <router-link to="/sub-react/" class="tabs-item">sub-react</router-link>
+      <!-- <span @click="toPurehtml">sub-purehtml</span> -->
     </div>
     <div class="main-panel">
       <button @click="changeGlobalState">main globalState</button>
@@ -38,9 +38,9 @@ export default {
         user: 'main-App.vue'
       })
     },
-    toApp2() {
+    toPurehtml() {
       const store = this.$store
-      this.$router.push('/app2')
+      this.$router.push('/sub-purehtml')
     },
   },
 };

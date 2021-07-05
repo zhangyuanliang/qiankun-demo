@@ -22,7 +22,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: window.__POWERED_BY_QIANKUN__ ? '/app1' : '/',
+  base: window.__POWERED_BY_QIANKUN__ ? '/sub-vue' : '/',
   routes
 })
 

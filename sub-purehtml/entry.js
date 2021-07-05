@@ -4,20 +4,20 @@ const render = ({ data = {} } = {}) => {
 };
 
 (global => {
-  global['app2'] = {
+  global['sub-purehtml'] = {
     bootstrap: () => {
-      console.log('[app2 purehtml] bootstrap');
+      console.log('[sub-purehtml] bootstrap');
       return Promise.resolve();
     },
     mount: (props) => {
-      console.log('[app2 purehtml] props from main framework', props);
+      console.log('[sub-purehtml] props from main framework', props);
       // global.$onGlobalStateChange = props.onGlobalStateChange
       // window.$setGlobalState = props.setGlobalState
       // window.$store = props.data.store
       return render(props);
     },
     unmount: () => {
-      console.log('app2 unmount');
+      console.log('sub-purehtml unmount');
       return Promise.resolve();
     },
   };

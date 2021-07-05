@@ -20,13 +20,15 @@ export default {
     };
   },
   mounted() {
-    this.globalState = this.$actions.getGlobalState()
+    if (this.isQiankun) {
+      this.globalState = this.$actions.getGlobalState()
+    }
   },
   methods: {
     changeGlobalState() {
       if (this.isQiankun) {
         this.$setGlobalState({
-          user: 'app1-components-HelloWorld'
+          user: 'sub-vue-components-HelloWorld'
         });
       }
     },
