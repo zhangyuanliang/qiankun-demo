@@ -2180,9 +2180,6 @@ commander@~2.19.0:
   version "2.19.0"
   resolved "https://registry.nlark.com/commander/download/commander-2.19.0.tgz?cache=0&sync_timestamp=1624609570521&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcommander%2Fdownload%2Fcommander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
-"common@file:../common":
-  version "1.0.0"
-
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/commondir/download/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"

@@ -31,6 +31,13 @@ registerMicroApps([
     activeRule: "/app2", // 子应用触发规则（路径）
     props: { actions, data: { actions, store } },
   },
+  {
+    name: "app3", // 子应用名称
+    entry: process.env.VUE_APP_SUB_APP3, // 子应用入口
+    container: "#subapp-viewport", // 子应用挂载的 div
+    activeRule: "/app3", // 子应用触发规则（路径）
+    props: { actions, data: { actions, store } },
+  },
 ]);
 
 // 启动默认应用

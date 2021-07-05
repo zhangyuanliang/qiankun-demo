@@ -5,6 +5,8 @@
       <router-link to="/app1/" class="tabs-item">app1: vue</router-link>
       <!-- 子应用 purehtml app2 -->
       <router-link to="/app2/" class="tabs-item">app2: purehtml</router-link>
+      <!-- 子应用 react app3 -->
+      <router-link to="/app3/" class="tabs-item">app3: react</router-link>
       <!-- <span @click="toApp2">app2: purehtml</span> -->
     </div>
     <div class="main-panel">
